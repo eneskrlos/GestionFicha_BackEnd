@@ -40,7 +40,7 @@ namespace GestionFicha.Utils
             var metadata = new PaginadorMetaData
             {
                 cantidadTotal = count,
-                elementosPorPagina = (int)parametrosPaginador.elementosPorPagina
+                elementosPorPagina = (parametrosPaginador != null) ? (int)parametrosPaginador.elementosPorPagina: 0
             };
 
             // Si el tamaño de página es 0, significa que el usuario quiere todos los elementos

@@ -76,25 +76,14 @@ namespace GestionFicha.Controllers
             {
                 var personal = ObtenerUsuarioLogueado();
                 OrdenDTO ordenTemp = new OrdenDTO();
-                if (UsuarioLogueadoEsGestor())
-                {
-                    ordenTemp.fecha = ordenDTO.fecha;
-                    ordenTemp.direccion = ordenDTO.direccion;
-                    ordenTemp.cantidad = ordenDTO.cantidad;
-                    ordenTemp.es_gestor = true;
-                    ordenTemp.id_producto = ordenDTO.id_producto;
-                    ordenTemp.nInterno = personal.nInterno;
-                }
-                else
-                {
-                    ordenTemp.fecha = ordenDTO.fecha;
-                    ordenTemp.direccion = ordenDTO.direccion;
-                    ordenTemp.cantidad = ordenDTO.cantidad;
-                    ordenTemp.es_gestor = false;
-                    ordenTemp.id_producto = ordenDTO.id_producto;
-                    ordenTemp.nInterno = personal.nInterno;
-                }
-                return Ok( await _repository.InsertarOrden(ordenTemp));
+                ordenTemp.fecha = ordenDTO.fecha;
+                ordenTemp.direccion = ordenDTO.direccion;
+                ordenTemp.cantidad = ordenDTO.cantidad;
+                ordenTemp.es_gestor = false;
+                ordenTemp.id_producto = ordenDTO.id_producto;
+                ordenTemp.nInterno = personal.nInterno;
+                
+                return Ok(await _repository.InsertarOrden(ordenTemp));
             }
             catch (InvalidParameter)
             {

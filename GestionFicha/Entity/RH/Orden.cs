@@ -44,4 +44,11 @@ namespace GestionFicha.Entity.RH
             return id_orden;
         }
     }
+
+    public class OrdenProductoPersonal
+    {
+        public Orden orden { get; set; }
+        public Producto producto { get; set; }
+        public Personal persona { get; set; }
+    }
 }

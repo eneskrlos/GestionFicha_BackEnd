@@ -93,6 +93,10 @@ namespace GestionFicha.Services
 
         public async Task<Producto> InsertarProducto(Producto prod)
         {
+            if (await EntidadExiste(prod))
+            {
+                throw new ElementAlreadyExists(String.Format("El producto {0} ya existen en BD", prod.nombre));
+            }
             return await base.Insertar(prod);
         }
 
